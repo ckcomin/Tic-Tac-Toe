@@ -78,7 +78,7 @@ namespace tic_tac_toe
                 // square = int(input(f"{player}'s turn to choose a square (1-9): "))
             board[number - 1] = player;
         }
-
+        
         static string NextPlayer(string current)
         {
             if (current == "" || current == "o")
@@ -90,10 +90,5 @@ namespace tic_tac_toe
                 return "o";
             }
         }
-
-        // if (__name__ == "__main__")
-        // {
-        //     main();
-        // }
     }
 }
