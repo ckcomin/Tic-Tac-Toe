@@ -10,19 +10,19 @@ namespace tic_tac_toe
     {
         static void Main(string[] args)
         {
-            string player = next_player("");
-            List<string> board = create_board();
-            while  (!(has_winner(board, player) || is_a_draw(board)))
+            string player = NextPlayer("");
+            List<string> board = CreateBoard();
+            while  (!(HasWinner(board, player) || Draw(board)))
             {
-                display_board(board);
-                make_move(player,  board);
-                player = next_player(player);
+                DisplayBoard(board);
+                MakeMove(player,  board);
+                player = NextPlayer(player);
             }
-            display_board(board);
+            DisplayBoard(board);
             Console.WriteLine("Thanks for playing!");
         }
 
-        static List<string> create_board()
+        static List<string> CreateBoard()
         {
             List<string> board = new List<string>();
             // for (square in range(9))
@@ -35,7 +35,7 @@ namespace tic_tac_toe
             return board;
         }
 
-        static void display_board(List<string> board)
+        static void DisplayBoard(List<string> board)
         {
             Console.WriteLine();
             Console.WriteLine($"{board[0]}|{board[1]}|{board[2]}");
@@ -46,7 +46,7 @@ namespace tic_tac_toe
             Console.WriteLine();
         }
                 
-        static bool is_a_draw(List<string> board)
+        static bool Draw(List<string> board)
         {
             for (int square = 0; square < 10; square ++)
             {
@@ -58,7 +58,7 @@ namespace tic_tac_toe
             return true;
         }
                 
-        static bool has_winner(List<string> board, string symbol)
+        static bool HasWinner(List<string> board, string symbol)
         {
             return (board[0] == symbol && board[1] == symbol && board[2] == symbol ||
                     board[3] == symbol && board[4] == symbol && board[5]== symbol ||
@@ -70,7 +70,7 @@ namespace tic_tac_toe
                     board[2] == symbol && board[4] == symbol && board[6]== symbol);
         }
 
-        static void make_move(string player, List<string> board)
+        static void MakeMove(string player, List<string> board)
         {
             Console.Write($"{player}'s turn to choose a square (1-9): ");
             string userInput = Console.ReadLine();
@@ -79,7 +79,7 @@ namespace tic_tac_toe
             board[number - 1] = player;
         }
 
-        static string next_player(string current)
+        static string NextPlayer(string current)
         {
             if (current == "" || current == "o")
             {
